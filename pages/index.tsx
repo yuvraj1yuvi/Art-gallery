@@ -4,12 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 
 export default function ArtGallery() {
-  const [selectedArtwork, setSelectedArtwork] = useState(null);
+  const [selectedArtwork, setSelectedArtwork] = useState<Artwork | null>(null);
   const [currentTheme, setCurrentTheme] = useState('landing');
   const [isLoading, setIsLoading] = useState(true);
   const [isHovering, setIsHovering] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const scrollRef = useRef(null);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Artwork collection with fixed image URLs
@@ -237,7 +237,20 @@ export default function ArtGallery() {
     }
   }, [currentTheme]);
 
-  const handleArtworkClick = (artwork) => {
+  interface Artwork {
+    id: number;
+    title: string;
+    description: string;
+    artist: string;
+    year: string;
+    medium: string;
+    src: string;
+    theme: string;
+    license: string;
+    tags: string[];
+  }
+
+  const handleArtworkClick = (artwork: Artwork) => {
     setSelectedArtwork(artwork);
     document.body.classList.add('overflow-hidden');
   };
@@ -247,7 +260,7 @@ export default function ArtGallery() {
     document.body.classList.remove('overflow-hidden');
   };
 
-  const navigateToTheme = (theme) => {
+  const navigateToTheme = (theme: string) => {
     setCurrentTheme(theme);
     setSearchQuery('');
     setMobileMenuOpen(false);
@@ -258,7 +271,7 @@ export default function ArtGallery() {
     }, 50);
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Escape' && selectedArtwork) {
       handleCloseModal();
     }
@@ -273,7 +286,7 @@ export default function ArtGallery() {
     return matchesTheme && matchesSearch;
   });
 
-  const getBackgroundPattern = (theme) => {
+  const getBackgroundPattern = (theme: string) => {
     switch (theme) {
       case 'nature': return 'bg-gradient-to-br from-green-50 to-blue-50';
       case 'ai-generated': return 'bg-gradient-to-br from-purple-50 to-pink-50';
@@ -284,7 +297,7 @@ export default function ArtGallery() {
     }
   };
 
-  const getThemeColor = (theme) => {
+  const getThemeColor = (theme: string) => {
     switch (theme) {
       case 'nature': return 'from-emerald-500 to-teal-600';
       case 'ai-generated': return 'from-purple-500 to-fuchsia-600';
