@@ -610,7 +610,7 @@ export default function ArtGallery() {
               <div className="max-w-7xl mx-auto">
                 {searchQuery && (
                   <div className="mb-6 text-gray-700">
-                    Showing results for "{searchQuery}" in {currentTheme === 'all' ? 'all categories' : currentTheme}
+                    Showing results for &ldquo;{searchQuery}&rdquo; in {currentTheme === 'all' ? 'all categories' : currentTheme}
                   </div>
                 )}
 
