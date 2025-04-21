@@ -13,7 +13,7 @@ export default function ArtGallery() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Artwork collection with fixed image URLs
-  const [artworks, setArtworks] = useState([
+  const [artworks = useState([
     // Nature
     {
       id: 1,
