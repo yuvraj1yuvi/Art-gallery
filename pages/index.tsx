@@ -13,7 +13,7 @@ export default function ArtGallery() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Artwork collection with fixed image URLs
-  const [artworks = useState([
+  const [artworks] = useState<Artwork[]>([
     // Nature
     {
       id: 1,
@@ -210,7 +210,7 @@ export default function ArtGallery() {
       theme: 'surreal',
       license: 'Free to use under Unsplash License',
       tags: ['surreal', 'floating', 'islands']
-    }
+    },
   ]);
 
   // All available themes
