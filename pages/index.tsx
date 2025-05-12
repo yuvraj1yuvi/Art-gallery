@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
+import Image from 'next/image';
 
 export default function ArtGallery() {
   const [selectedArtwork, setSelectedArtwork] = useState<Artwork | null>(null);
@@ -494,7 +495,7 @@ export default function ArtGallery() {
                         : theme.id === 'exhibitions'
                           ? 'bg-gradient-to-r from-purple-100 via-pink-100 to-rose-100 text-purple-700 hover:from-purple-200 hover:via-pink-200 hover:to-rose-200'
                           : 'hover:bg-gray-800 text-gray-300'
-                    }`}
+                      }`}
                   >
                     {theme.name}
                   </button>
@@ -619,40 +620,46 @@ export default function ArtGallery() {
         {/* Floating artwork previews */}
         <motion.div
           className="absolute top-1/4 left-1/4 w-48 h-64 rounded-lg overflow-hidden shadow-xl"
-          animate={isHovering ? { y: -10, rotate: -10 } : { y: 0, rotate: -5 }} // Tilted to the left
+          animate={isHovering ? { y: -10, rotate: -10 } : { y: 0, rotate: -5 }}
           transition={{ duration: 0.5, type: 'spring', stiffness: 100 }}
         >
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&auto=format&fit=crop"
             alt="Nature preview"
+            width={192}
+            height={256}
             className="w-full h-full object-cover"
-            loading="eager"
+            priority
           />
         </motion.div>
 
         <motion.div
           className="absolute top-1/4 right-1/4 w-52 h-56 rounded-lg overflow-hidden shadow-xl"
-          animate={isHovering ? { y: 10, rotate: 10 } : { y: 0, rotate: 5 }} // Tilted to the right
+          animate={isHovering ? { y: 10, rotate: 10 } : { y: 0, rotate: 5 }}
           transition={{ duration: 0.5, delay: 0.1, type: 'spring', stiffness: 100 }}
         >
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop"
             alt="AI art preview"
+            width={208}
+            height={224}
             className="w-full h-full object-cover"
-            loading="eager"
+            priority
           />
         </motion.div>
 
         <motion.div
           className="absolute top-1/3 left-1/3 w-48 h-64 rounded-lg overflow-hidden shadow-xl"
-          animate={isHovering ? { y: -8, rotate: -8 } : { y: 0, rotate: -3 }} // Slightly tilted to the left
+          animate={isHovering ? { y: -8, rotate: -8 } : { y: 0, rotate: -3 }}
           transition={{ duration: 0.5, delay: 0.2, type: 'spring', stiffness: 100 }}
         >
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800&auto=format&fit=crop"
             alt="Abstract preview"
+            width={192}
+            height={256}
             className="w-full h-full object-cover"
-            loading="eager"
+            priority
           />
         </motion.div>
 
@@ -948,10 +955,12 @@ export default function ArtGallery() {
                         whileHover={{ y: -5 }}
                       >
                         <div className="relative overflow-hidden rounded-xl shadow-lg bg-white h-80">
-                          <img
+                          <Image
                             src={artwork.src}
                             alt={artwork.title}
-                            className="w-full h-full object-cover transition duration-300 group-hover:scale-105" // Smoother hover
+                            width={400}
+                            height={320}
+                            className="w-full h-full object-cover transition duration-300 group-hover:scale-105"
                             loading="lazy"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -996,9 +1005,11 @@ export default function ArtGallery() {
               className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow"
             >
               <div className="flex items-center mb-6">
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop"
                   alt="Sarah Johnson"
+                  width={48}
+                  height={48}
                   className="w-12 h-12 rounded-full object-cover"
                 />
                 <div className="ml-4">
@@ -1026,9 +1037,11 @@ export default function ArtGallery() {
               className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow"
             >
               <div className="flex items-center mb-6">
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop"
                   alt="Michael Chen"
+                  width={48}
+                  height={48}
                   className="w-12 h-12 rounded-full object-cover"
                 />
                 <div className="ml-4">
@@ -1056,9 +1069,11 @@ export default function ArtGallery() {
               className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow"
             >
               <div className="flex items-center mb-6">
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop"
                   alt="Emma Rodriguez"
+                  width={48}
+                  height={48}
                   className="w-12 h-12 rounded-full object-cover"
                 />
                 <div className="ml-4">
@@ -1174,11 +1189,13 @@ export default function ArtGallery() {
 
               <div className="grid md:grid-cols-2 gap-0">
                 <div className="relative h-96 md:h-auto">
-                  <img
+                  <Image
                     src={selectedArtwork.src}
                     alt={selectedArtwork.title}
+                    width={800}
+                    height={600}
                     className="w-full h-full object-contain md:object-cover"
-                    loading="eager"
+                    priority
                   />
                 </div>
 
@@ -1289,7 +1306,13 @@ export default function ArtGallery() {
                     <div className="space-y-4 mb-6">
                       {cart.map((item) => (
                         <div key={item.id} className="flex items-center gap-4">
-                          <img src={item.src} alt={item.title} className="w-16 h-16 object-cover rounded-lg" />
+                          <Image
+                            src={item.src}
+                            alt={item.title}
+                            width={64}
+                            height={64}
+                            className="w-16 h-16 object-cover rounded-lg"
+                          />
                           <div className="flex-1">
                             <h4 className="font-medium">{item.title}</h4>
                             <p className="text-sm text-gray-500">by {item.artist}</p>
@@ -1540,9 +1563,11 @@ export default function ArtGallery() {
                     <div className="space-y-4">
                       {cart.map((item, index) => (
                         <div key={index} className="flex gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                          <img
+                          <Image
                             src={item.src}
                             alt={item.title}
+                            width={80}
+                            height={80}
                             className="w-20 h-20 object-cover rounded-lg"
                           />
                           <div className="flex-1">
