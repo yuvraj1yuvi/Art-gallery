@@ -1018,7 +1018,7 @@ export default function ArtGallery() {
                 </div>
               </div>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
-                "The digital art collection here is simply breathtaking. I've found pieces that perfectly complement my home's aesthetic. The quality and attention to detail are exceptional."
+                &ldquo;The digital art collection here is simply breathtaking. I&apos;ve found pieces that perfectly complement my home&apos;s aesthetic. The quality and attention to detail are exceptional.&rdquo;
               </p>
               <div className="flex text-yellow-400">
                 {[...Array(5)].map((_, i) => (
@@ -1050,7 +1050,7 @@ export default function ArtGallery() {
                 </div>
               </div>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
-                "As a curator, I'm impressed by the diverse range of digital artworks. The platform makes it easy to discover emerging artists and their unique perspectives."
+                &ldquo;As a curator, I&apos;m impressed by the diverse range of digital artworks. The platform makes it easy to discover emerging artists and their unique perspectives.&rdquo;
               </p>
               <div className="flex text-yellow-400">
                 {[...Array(5)].map((_, i) => (
@@ -1082,7 +1082,7 @@ export default function ArtGallery() {
                 </div>
               </div>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
-                "The platform has given me incredible exposure. The quality of the artwork presentation and the professional service make it a pleasure to showcase my work here."
+                &ldquo;The platform has given me incredible exposure. The quality of the artwork presentation and the professional service make it a pleasure to showcase my work here.&rdquo;
               </p>
               <div className="flex text-yellow-400">
                 {[...Array(5)].map((_, i) => (
